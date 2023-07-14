@@ -8,13 +8,15 @@
 # Output:
 # 2
 
-import math
+# import math
 
-m = 750
-n = 700
+print("Введите дистанцию маршрута в км: ")
+interval = input()
+print("Введите может машина проехать в день км:")
+distPerDay = input()
 # print(round(m / n))
 # print(math.ceil(m / n))
 
-res = int(m / n)
+res = int(interval / distPerDay)
 res = res + (res % 2)
 print(res)
