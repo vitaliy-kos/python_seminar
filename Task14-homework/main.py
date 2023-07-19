@@ -21,3 +21,18 @@
 # к вам за помощью. Помогите ей (при помощи функции all_divisors(number), которую напишете сами). 
 # Постарайтесь найти самое оптимальное решение. Результат представьте в виде списка 
 # (не забудьте отсортировать по возрастанию).
+
+import random
+import time
+
+start_time = time.time()
+
+num = int(input("Insert number: "))
+temps = []
+
+for i in range(num):
+    temps.append(random.randint(-50, 50))
+
+duration = time.time() - start_time
+
+print(f"Duration of execution {duration}")
