@@ -11,3 +11,27 @@
 # Температуры – целые числа и лежат в диапазоне от –50 до 50
 # Input: 6 -> -20 30 -40 50 10 -10 Output: 2
 
+import random
+
+amount_days = int(input("Insert number of days: "))
+temps = []
+
+for i in range(amount_days):
+    temps.append(random.randint(-50, 50))
+
+count_max_warm = 0
+count = 0
+
+for i in temps:
+
+    if i > 0:
+        count += 1
+        if count > count_max_warm:
+            count_max_warm = count
+    else: 
+        if count > count_max_warm:
+            count_max_warm = count
+        count = 0
+
+print(f"Array temps: {temps}")
+print(f"Max warm days: {count_max_warm}")
