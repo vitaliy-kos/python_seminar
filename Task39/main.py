@@ -12,7 +12,7 @@
 # Вывод:
 # 3 3 2 12
 
-import time, random
+import random
 
 # def list_gen(len):
 #     new_list = []
