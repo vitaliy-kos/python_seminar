@@ -12,7 +12,9 @@
 # **Ввод:** пара-ра-рам рам-пам-папам па-ра-па-да    
 # **Вывод:** Парам пам-пам
 
-phrases = 'пара-ра-рам рам-пам-папам па-ра-па-да'
+from tkinter import *
+
+text_task = 'Винни-Пух попросил Вас посмотреть, есть ли в его стихах ритм.\n Поскольку разобраться в его кричалках не настолько просто,\n насколько легко он их придумывает, Вам стоит написать программу.\n Винни-Пух считает, что ритм есть, если число слогов\n (т.е. число гласных букв) в каждой фразе стихотворения одинаковое.\n Фраза может состоять из одного слова,\n если во фразе несколько слов, то они разделяются дефисами.\n Фразы отделяются друг от друга пробелами.\n Стихотворение Винни-Пух вбивает в программу с клавиатуры.\n В ответе напишите “Парам пам-пам”, если с ритмом все в порядке\n и “Пам парам”, если с ритмом все не в порядке.'
 list_letters = ["а", "е", "ё", "и", "о", "у", "ы", "э", "ю", "я"]
 
 def counter(word):
@@ -22,9 +24,37 @@ def counter(word):
             count += 1
     return count
 
-syllable = list(map(counter, phrases.split(' ')))
+def check():
+    inp = txt.get()
+    syllable = list(map(counter, inp.split(' ')))
+    if (syllable.count(syllable[0]) == len(syllable)):
+        result_str.configure(text="Парам пам-пам")
+    else:
+        result_str.configure(text="Пам парам")
+    
 
-if (syllable.count(syllable[0]) == len(syllable)):
-    print('Парам пам-пам')
-else:
-    print('Пам парам')
+window = Tk()
+window.title("Задача 34: Винни-Пух")
+window.geometry('600x600')
+window.resizable(0, 0)
+
+header = Label(window, text="Задача 34", font=('Arial', '50'))
+header.grid(column=0, row=0)
+
+description = Label(window, text=text_task, font=('Arial', '18'), justify='center', wraplength=600)
+description.grid(column=0, row=1, pady=40)
+
+txt = Entry(window, width=50, justify='center')
+txt.grid(column=0, row=3)
+txt.insert(END, 'пара-ра-рам рам-пам-папам па-ра-па-да')
+
+btn = Button(window, text="Проверить!", command=check)
+btn.grid(column=0, row=4, pady=20)
+
+result = Label(window, text="Результат:", font=('Arial', '18'))
+result.grid(column=0, row=10)
+
+result_str = Label(window, text="Проверка еще не запускалась", font=('Arial', '18'))
+result_str.grid(column=0, row=11)
+
+window.mainloop()
