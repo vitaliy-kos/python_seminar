@@ -78,7 +78,7 @@ def get_users():
     return cur.fetchall()
 
 def search_contact_by_query(que):
-    str_que = "%" + que + "%"
+    str_que = "%" + que.lower() + "%"
     cur.execute("SELECT users.id FROM phones FULL JOIN users ON phones.user_id = users.id WHERE phones.phone LIKE ? OR users.first_name LIKE ? OR users.last_name LIKE ? GROUP BY users.id", (str_que, str_que, str_que) )
     return cur.fetchall()
 
