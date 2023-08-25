@@ -79,9 +79,7 @@ def get_users():
 
 def search_contact_by_query(que):
     str_que = "%" + que + "%"
-    print(str_que)
-    cur.execute("SELECT users.id FROM phones FULL JOIN users ON phones.user_id = users.id WHERE phones.phone LIKE ? OR LOWER(users.first_name) LIKE LOWER(?) OR LOWER(users.last_name) LIKE LOWER(?) GROUP BY users.id", (str_que, str_que, str_que) )
-    # print(cur)
+    cur.execute("SELECT users.id FROM phones FULL JOIN users ON phones.user_id = users.id WHERE phones.phone LIKE ? OR users.first_name LIKE ? OR users.last_name LIKE ? GROUP BY users.id", (str_que, str_que, str_que) )
     return cur.fetchall()
 
 @bot.message_handler(commands=['start'])
