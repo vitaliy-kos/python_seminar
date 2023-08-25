@@ -29,11 +29,6 @@ cur.execute("""CREATE TABLE IF NOT EXISTS phone_types (
     type_name TEXT
 )""")
 
-
-cur.execute("""INSERT OR IGNORE INTO phone_types (type_name) VALUES ('Мобильный'), ('Рабочий'), ('Домашний')""")
-cur.execute("""INSERT OR IGNORE INTO users (first_name, last_name) VALUES ('иван', 'иванов'), ('петр', 'петров')""")
-cur.execute("""INSERT OR IGNORE INTO phones (user_id, phone, type) VALUES ('1', '89772332398', 3), ('1', '74952231221', 1), ('2', '79772231221', 1)""")
-
 ph_type = 0
 contact_id = 0
 fn = ''
